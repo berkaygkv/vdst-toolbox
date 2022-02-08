@@ -5,16 +5,15 @@ DESCRIPTION = 'Python package for various tools that will be used by Vestel Team
 
 # Setting up
 setup(
-       # the name must match the folder name 'verysimplemodule'
-        name="vdst-python-toolbox", 
+        name="vdst-toolbox", 
         version=VERSION,
         author="Berkay Gokova",
         author_email='berkaygokova@gmail.com',
         description=DESCRIPTION,
         packages=find_packages(),
-        install_requires=['pandas', 'numpy', 'matplotlib'], # add any additional packages that 
-        # needs to be installed along with your package. Eg: 'caer'
-        
+        download_url="https://github.com/berkaygkv/vdst-toolbox/archive/refs/tags/1.0.1.tar.gz",
+        url="https://github.com/berkaygkv/vdst-toolbox",
+        install_requires=['pandas', 'numpy', 'matplotlib'],      
         keywords=['python', 'first package'],
         classifiers= [
             "Development Status :: 3 - Alpha",
