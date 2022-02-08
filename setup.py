@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '1.0.0' 
+VERSION = '1.0.1' 
 DESCRIPTION = 'Python package for various tools that will be used by Vestel Team'
 
 # Setting up
@@ -11,7 +11,7 @@ setup(
         author_email='berkaygokova@gmail.com',
         description=DESCRIPTION,
         packages=find_packages(),
-        download_url="https://github.com/berkaygkv/vdst-toolbox/archive/refs/tags/1.0.1.tar.gz",
+        download_url=f"https://github.com/berkaygkv/vdst-toolbox/archive/refs/tags/{VERSION}.tar.gz",
         url="https://github.com/berkaygkv/vdst-toolbox",
         install_requires=['pandas', 'numpy', 'matplotlib'],      
         keywords=['python', 'first package'],
