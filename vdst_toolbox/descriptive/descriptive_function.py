@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import numpy as np
+
 pd.options.display.float_format = '{:.2f}'.format
 pd.options.display.max_columns = None
 
@@ -14,8 +15,7 @@ def value_counts(x):
     value_dict = x.value_counts(normalize=True).sort_values(ascending=False).head(3).to_dict().items()
     return value_dict
 
-def main(file_path):
-    df = pd.read_excel(file_path)
+def generate_descriptives(df):
     numeric = df.select_dtypes(include=['float','int'])
     categorical = df.select_dtypes(include='object')    
     try:
@@ -43,9 +43,3 @@ def main(file_path):
 
     return df, categorical_final, numeric_final
     
-
-if __name__ == '__main__':
-    # Excel path'ini main fonksiyonunun içine yerleþtir.
-    path = r'C:\Users\berkaygo\Desktop\Codes\notebooks\Lab\HistoricalEcommerce.xlsx'
-    df, categoric, numeric = main(path)
-    print(df)
