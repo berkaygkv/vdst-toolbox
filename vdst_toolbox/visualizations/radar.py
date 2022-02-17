@@ -32,10 +32,16 @@ class RadarChart():
         sdata = _scale_data(data, self.ranges)
         self.ax.plot(self.angle, np.r_[sdata, sdata[0]], *args, **kw)
 
-    def scatter_plot(self, data, *args, **kw):
+    def min_max_plot(self, data, *args, **kw):
         font_size = self.font_size
         sdata = _scale_data(data, self.ranges)
-        self.ax.scatter(self.angle, np.r_[sdata, sdata[0]], *args, **kw)
+        data_min = data[0]
+        data_max = data[1]
+        sdata_min = _scale_data(data_min, self.ranges)
+        sdata_max = _scale_data(data_max, self.ranges)
+        zippo = zip(self.angle, sdata_min, sdata_max)
+        for ang, dt_min, dt_max in zippo: 
+            self.ax.plot([ang, ang], [dt_min,dt_max], *args, **kw, marker='o', linewidth=3)
 
     def fill(self, data, *args, **kw):
         sdata = _scale_data(data, self.ranges)
@@ -56,20 +62,20 @@ class RadarChart():
             except TypeError:
                 raise TypeError(
                     """
--------- min - max colums not found -------
+                        -------- min - max colums not found -------
 
-DataFrame Object should have the following structure:
+                        DataFrame Object should have the following structure:
 
 
 
-        Rakip/Vestel                 Marka_Çe?itlili?i               Vestel_Oran?               AB_Grubu               TP_Grubu               ?l_Statüsü              
-                 min   max      mean               min max      mean          min max      mean      min max      mean      min max      mean        min max      mean
-cluster                                                                                                                                                               
-0           1.000000  10.0  3.614638                 1   4  2.857143            1   2  1.158730        1   3  2.174603        0   6  2.433862          1   3  2.449735
-1           0.000000   0.5  0.011944                 0   1  0.026059            3   4  3.973941        1   2  1.599349        0   3  0.723127          1   3  1.628664
-2           0.333333   5.0  1.428962                 1   4  1.477752            1   3  2.011710        1   2  1.782201        0   3  0.871194          1   3  1.629977
-3           0.000000   2.0  1.040026                 0   3  1.228346            2   4  2.496063        2   3  2.173228        0   5  2.551181          2   3  2.818898
-"""
+                                Rakip/Vestel                 Marka_Çe?itlili?i               Vestel_Oran?               AB_Grubu               TP_Grubu               ?l_Statüsü              
+                                        min   max      mean               min max      mean          min max      mean      min max      mean      min max      mean        min max      mean
+                        cluster                                                                                                                                                               
+                        0           1.000000  10.0  3.614638                 1   4  2.857143            1   2  1.158730        1   3  2.174603        0   6  2.433862          1   3  2.449735
+                        1           0.000000   0.5  0.011944                 0   1  0.026059            3   4  3.973941        1   2  1.599349        0   3  0.723127          1   3  1.628664
+                        2           0.333333   5.0  1.428962                 1   4  1.477752            1   3  2.011710        1   2  1.782201        0   3  0.871194          1   3  1.629977
+                        3           0.000000   2.0  1.040026                 0   3  1.228346            2   4  2.496063        2   3  2.173228        0   5  2.551181          2   3  2.818898
+                        """
                 )
                 
             df_min = df['min']
@@ -141,7 +147,7 @@ cluster
                 s = 250
                 data_max = np.array(df_max.loc[index[ind], attributes])
                 data_min = np.array(df_min.loc[index[ind], attributes])   
-                self.scatter_plot(data_max, color = 'g', marker="^", s=s)
-                self.scatter_plot(data_min, color = 'r', marker="v", s=s)
+                #self.scatter_plot(data_max, color = 'g', marker="^", s=s)
+                self.min_max_plot([data_min, data_max], color = 'r')
             self.title(title = 'cluster nº{}'.format(index[ind]), color = 'r')
             ind += 1
