@@ -2,34 +2,7 @@
 
 
 
-
-<!-- PROJECT LOGO -->
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#radar-chart">Radar Chart</a></li>
-        <li><a href="#descriptive-function">Descriptive Analysis</a></li>
-      </ul>
-    </li>
-
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
+## Project Details
 
 The module has been created by the Vestel Data Science Team to provide data analysis tools tailored based on the Team's needs. 
 
@@ -90,7 +63,7 @@ To be added...
 
 <!-- CONTACT -->
 ## Contact
-Berkay Gökova - berkaygokova@gmail.com
+Berkay GÃ¶kova - berkaygokova@gmail.com
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
